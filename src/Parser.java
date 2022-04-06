@@ -4,11 +4,15 @@ import java.io.*;
 import java.nio.file.Paths;
 
 public class Parser {
+    public static Map<String, String> names;
     public static Map<String, Integer> keys;
+    public static Map<Integer, String> values;
     public static Map<Integer, HashMap<Integer, Integer>> adj;
     
     public Parser() {
+        Parser.names = new HashMap<String, String>();
         Parser.keys = new HashMap<String, Integer>();
+        Parser.values = new HashMap<Integer, String>();
         Parser.adj = new HashMap<Integer, HashMap<Integer, Integer>>();
     }
     
@@ -27,6 +31,9 @@ public class Parser {
             String[] data = row.split(",");
             if (data.length > 2) {
                 if (Integer.parseInt(data[1]) != year) {
+                    if (season.containsKey("TOT")) {
+                        season.remove("TOT");
+                    }
                     for (Map.Entry<String, HashSet<Integer>> e : season.entrySet()) {
                         List<Integer> players = new ArrayList<Integer>(e.getValue());
                         for (int i = 0; i < players.size(); i++) {
@@ -43,7 +50,9 @@ public class Parser {
                 }
                 name = data[2].replaceAll("\\s", "").toLowerCase();
                 nameKey = this.keys.getOrDefault(name, this.keys.size() + 1);
+                this.names.put(name,  data[2]);
                 this.keys.put(name, nameKey);
+                this.values.put(nameKey, name);
                 
                 team = data[5];
                 currPlayers = season.getOrDefault(team, new HashSet<Integer>());
@@ -54,12 +63,24 @@ public class Parser {
         br.close();
         
         // Verify that the results are correct.
-        for (int k = 1; k < 11; k++) {
+        /*
+         for (int k = 1; k < 11; k++) {
             this.adj.get(k).entrySet().forEach(entry -> {
                 System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
             });
             System.out.println();
         }
+        
+        this.names.entrySet().forEach(entry -> {
+            System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
+        });*
+        this.keys.entrySet().forEach(entry -> {
+            System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
+        });
+        this.values.entrySet().forEach(entry -> {
+            System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
+        });
+        */
     }
     
     public void incrementEdge(int p1, int p2) {
@@ -73,14 +94,21 @@ public class Parser {
     }
     
     public static String question1(String p1, String p2) {
+        // check whether or not the input players are valid
         return "Question 1";
     }
     
     public static String question2(String p1, String p2) {
+        // check whether or not the input players are valid
         return "Question 2";
     }
     
     public static String question3(String p) {
+        // check whether or not the input player is valid
         return "Question 3";
+    }
+    
+    public static String question4() {
+        return "Question 4";
     }
 }

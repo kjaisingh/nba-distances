@@ -16,17 +16,36 @@ After this, the program will complete some amount of processing, and then print 
 DOCUMENTATION
 -------------
 Q1: What is the shortest path between any two NBA players?
-Expected Input: Full names of two players that are comma-separated. 
-Example: "Lebron James, Michael Jordan".
+Expected Input: Full names of two players in comma-separated form. 
+Example Input: Lebron James, Michael Jordan.
+Expected Output: All shortest distance paths of teammates from the first to second player.
+Example Output:  
+    1. Michael Jordan --> JR Smith --> Lebron James
+    2. Michael Jordan --> Bradley Beal --> Lebron James
+    3. Michael Jordan --> Chris Paul --> Lebron James
 
 Q2: What is the minimum cost path between any two NBA players?
-Expected Input: Full names of two players that are comma-separated. 
-Example: "Lebron James, Michael Jordan".
+Expected Input: Full names of two players in comma-separated form. 
+Example Input: Lebron James, Michael Jordan.
+Expected Output: The minimum-cost path of teammates from the first to second player.
+Example Output:  Michael Jordan --> JR Smith (2) --> Lebron James (4)
 
 Q3: What are the high-level statistics regarding any NBA player?
 Expected Input: Full name of a player.
-Example: "Lebron James".
+Example Input: Lebron James.
+Expected Output: A list of statistics and facts regarding that player.
+Example Output:
+    - Longest-Duration Teammate: JR Smith (12).
+    - other things
 
+Q4: What are the high-level statistics regarding the NBA as a whole?
+Expected Input: N/A.
+Example Input: Hit enter.
+Expected Output: Intuitive statistics about the NBA and relationships within it.
+Example Output: 
+    - Maximal Clique: (A, B, C, D, E, F).
+    - Maximal Cycle: A --> B --> C --> D --> E --> F --> A.
+    - 5 Longest-Duration Teammates: A & B, C & D, E & F, G & H, I & J.
 
 ASSUMPTIONS
 -----------

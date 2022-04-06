@@ -20,10 +20,10 @@ public class Interface {
         String s;
         
         while (true) {
-            System.out.println("Input a question number between 1-3.");
+            System.out.println("Input a question number between 1-4.");
             s = sc.nextLine();
             question = Integer.parseInt(s);
-            if (question < 1 || question > 3) {
+            if (question < 1 || question > 4) {
                 System.out.println("Invalid question number.");
                 continue;
             }
@@ -50,6 +50,8 @@ public class Interface {
             case (3):
                 p1 = input.replaceAll("\\s", "").toLowerCase();
                 return Parser.question3(p1);
+            case (4):
+                return Parser.question4();
         }
         return "Invalid question number.";
     }
