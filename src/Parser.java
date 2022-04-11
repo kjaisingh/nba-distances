@@ -112,7 +112,62 @@ public class Parser {
     
     public static String question3(String p) {
         // check whether or not the input player is valid
-        return "Question 3 Called";
+        if (keys.get(p) != null) {
+            String toReturn = "";
+            int playerId = keys.get(p);
+            HashMap<Integer, Integer> teammates = adj.get(playerId);
+
+            // find number of teammates
+            toReturn += "Number of teammates: " + teammates.size() + "\n"; 
+
+            // find longest duration teammates
+            String longestMate = "";
+            int longestYears = 0; 
+            for(Map.Entry<Integer, Integer> teammate: teammates.entrySet()) {
+                int years = (int)teammate.getValue();
+                if (years > longestYears) {
+                    longestYears = years;
+                    int currMate = (int)teammate.getKey();
+                    longestMate = names.get(values.get(currMate));
+                }
+            }
+            toReturn += "Longest-Duration teammate: " + longestMate + " (" + longestYears + ")\n";
+
+            // find longest duration mutual teammates
+            String mate1 = "";
+            String mate2 = "";
+            int matesYears = 0;
+            for(Map.Entry<Integer, Integer> teammate: teammates.entrySet()) {
+                int teammateId = (int)teammate.getKey();
+                HashMap<Integer, Integer> teammates2 = adj.get(teammateId);
+                for (Map.Entry<Integer, Integer> teammate2: teammates2.entrySet()) {
+                    int teammate2Id = (int)teammate2.getKey();
+                    int years = (int)teammate.getValue();
+                    if (teammate2Id != playerId && years > matesYears) {
+                        matesYears = years;
+                        mate1 = values.get(teammateId);
+                        mate2 = values.get(teammate2Id);
+                    }
+                }
+            }
+            toReturn += "Longest-Duration Mutual Teammates: " + mate1 + " & " + mate2 + " (" + matesYears + ")\n";
+
+            // find clustering coefficient
+            int mutualCounter = 0;
+            for(Map.Entry<Integer, Integer> teammate: teammates.entrySet()) {
+                int teammateId = (int)teammate.getKey();
+                HashMap<Integer, Integer> teammates2 = adj.get(teammateId);
+                for (Map.Entry<Integer, Integer> teammate2: teammates.entrySet()) {
+                    if (teammates2.get((int)teammate2.getKey()) != null) {
+                        mutualCounter++;
+                    }
+                }
+            }
+            int n = teammates.size();
+            toReturn += "Clustering Coefficient: " + (0.5*mutualCounter/(n*((n-1)/2 - 1)));
+            return toReturn;
+        }
+        return "That player is not in our database";
     }
     
     public static String question4() {
