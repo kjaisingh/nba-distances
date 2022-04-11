@@ -10,9 +10,16 @@ public class Parser {
     public static Map<Integer, HashMap<Integer, Integer>> adj;
     
     public Parser() {
+        // maps coded names to full names (eg. "lebronjames" - "Lebron James")
         Parser.names = new HashMap<String, String>();
+        
+        // maps coded names to player IDs (eg. "lebronjames" - 156)
         Parser.keys = new HashMap<String, Integer>();
+        
+        // maps player IDs to coded names (eg. 156 - "lebronjames")
         Parser.values = new HashMap<Integer, String>();
+        
+        // maps player IDs to a map of other player IDs and the number of years they player together
         Parser.adj = new HashMap<Integer, HashMap<Integer, Integer>>();
     }
     
@@ -73,14 +80,14 @@ public class Parser {
         
         this.names.entrySet().forEach(entry -> {
             System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
-        });*
+        });
         this.keys.entrySet().forEach(entry -> {
             System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
         });
         this.values.entrySet().forEach(entry -> {
             System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
-        });
-        */
+        });*/
+        
     }
     
     public void incrementEdge(int p1, int p2) {
@@ -95,21 +102,21 @@ public class Parser {
     
     public static String question1(String p1, String p2) {
         // check whether or not the input players are valid
-        return "Question 1";
+        return "Question 1 Called";
     }
     
     public static String question2(String p1, String p2) {
         // check whether or not the input players are valid
-        return "Question 2";
+        return "Question 2 Called";
     }
     
     public static String question3(String p) {
         // check whether or not the input player is valid
-        return "Question 3";
+        return "Question 3 Called";
     }
     
     public static String question4() {
         // no checks necessary
-        return "Question 4";
+        return "Question 4 Called";
     }
 }

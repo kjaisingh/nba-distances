@@ -38,6 +38,7 @@ Example Output:
     - Number of Different Teammates: 57.
     - Longest-Duration Teammate: JR Smith (12).
     - Longest-Duration Mutual Teammates: Kyle Korver & Kevin Love (14).
+    - Clustering Coefficient: 0.11.
 
 Q4: What are the high-level statistics regarding the NBA as a whole?
 Expected Input: N/A.

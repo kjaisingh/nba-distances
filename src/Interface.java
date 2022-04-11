@@ -32,6 +32,7 @@ public class Interface {
             input = sc.nextLine();
             
             System.out.println(redirect(question, input));
+            System.out.println();
         }
     }
     
