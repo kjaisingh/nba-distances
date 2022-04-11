@@ -6,7 +6,7 @@ EXECUTION INSTRUCTIONS
 ----------------------
 The program can be run by executing Interface.java, which contains the main method and program that interacts with user input. 
 
-When run, it will ask for a question number, after which you simply type an integer between 1 to 8 and press enter. 
+When run, it will ask for a question number, after which you simply type an integer between 1 to 4 and press enter. 
 
 After this, it will ask for an input text, which is dependent on the question. Refer to the documentation below to see the format for these inputs.
 
