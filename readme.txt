@@ -35,8 +35,9 @@ Expected Input: Full name of a player.
 Example Input: Lebron James.
 Expected Output: A list of statistics and facts regarding that player.
 Example Output:
+    - Number of Different Teammates: 57.
     - Longest-Duration Teammate: JR Smith (12).
-    - other things
+    - Longest-Duration Mutual Teammates: Kyle Korver & Kevin Love (14).
 
 Q4: What are the high-level statistics regarding the NBA as a whole?
 Expected Input: N/A.
