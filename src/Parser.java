@@ -226,7 +226,7 @@ public class Parser {
                     }
                 }
             }
-            toReturn += "Longest-Duration Mutual Teammates: " + mate1 + " & " + mate2 + " (" + matesYears + ")\n";
+            toReturn += "Longest-Duration Mutual Teammates: " + names.get(mate1) + " & " + names.get(mate2) + " (" + matesYears + ")\n";
 
             // find clustering coefficient
             int mutualCounter = 0;
