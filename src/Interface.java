@@ -34,7 +34,7 @@ public class Interface {
             System.out.println(redirect(question, input));
             System.out.println();
         }
-    }
+    };
     
     public static String redirect(int question, String input) {
         String p1;

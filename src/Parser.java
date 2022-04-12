@@ -100,10 +100,86 @@ public class Parser {
         }
         this.adj.put(p1, p1Edges);
     }
+
+    private static void findPaths(ArrayList<ArrayList<Integer>> paths, ArrayList<Integer> arr, ArrayList<ArrayList<Integer>> parent,
+                      int n, int player2) {
+        if (player2 == -1) {
+            paths.add(new ArrayList<>(arr));
+            return;
+        }
+        for (int p: parent.get(player2)) {
+            arr.add(player2);
+            findPaths(paths, arr, parent, n, p);
+            arr.remove(arr.size()-1);
+        }
+    }
     
     public static String question1(String p1, String p2) {
         // check whether or not the input players are valid
-        return "Question 1 Called";
+        if (!keys.containsKey(p1) || !keys.containsKey(p2)) {
+            return "Input player isn't valid!";
+        }
+        // initialize queue, distance array, parent array for bfs
+        int player1ID = keys.get(p1);
+        int player2ID = keys.get(p2);
+        Queue<Integer> q = new LinkedList<Integer>();
+        q.add(player1ID);
+
+        int[] dist = new int[4550];
+        for (int i = 0; i < dist.length; i++) {
+            dist[i] = Integer.MAX_VALUE;
+        }
+        dist[player1ID] = 0;
+
+        ArrayList<ArrayList<Integer>> parent = new ArrayList<>();
+        for (int i = 0; i < 4550; i++) {
+            parent.add(new ArrayList<>());
+        }
+
+        parent.get(player1ID).clear();
+        parent.get(player1ID).add(-1);
+        
+        // bfs to get all shortest paths
+        while(!q.isEmpty()) {
+            int node = q.remove();
+
+            HashMap<Integer, Integer> adjMap = adj.get(node);
+            for (Map.Entry<Integer, Integer> entry: adjMap.entrySet()) {
+                int key = entry.getKey();
+                if (dist[key] > dist[node] + 1) {
+                    dist[key] = dist[node] + 1;
+                    q.add(key);
+                    parent.get(key).clear();
+                    parent.get(key).add(node);
+                } else if (dist[key] == dist[node] + 1) {
+                    parent.get(key).add(node);
+                }
+            }
+        }
+        ArrayList<ArrayList<Integer>> paths = new ArrayList<>();
+        ArrayList<Integer> path = new ArrayList<>();
+        
+        // traverse parent array to find all shortest paths
+        findPaths(paths, path, parent, 4550, player2ID);
+        String res = "";
+        
+        // print out all shortest paths
+        for (ArrayList<Integer> v: paths) {
+            Collections.reverse(v);
+            for (int u: v) {
+                String codedName = values.get(u);
+                String rawName = names.get(codedName);
+                if (res.equals("") || res.endsWith("\n")) {
+                    res += rawName;
+                } else {
+                    res += "-> " + rawName;
+                }
+                
+            }
+            res += "\n";
+        }
+
+        return res;
     }
     
     public static String question2(String p1, String p2) {
