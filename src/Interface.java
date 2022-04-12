@@ -41,12 +41,12 @@ public class Interface {
         String p2;
         switch (question) {
             case (1):
-                p1 = input.replaceAll("\\s", "").split(",")[0].toLowerCase();
-                p2 = input.replaceAll("\\s", "").split(",")[1].toLowerCase();
+                p1 = input.replaceAll("\\s", "").split(",")[0].toLowerCase().replaceAll("[^A-Za-z]", "");
+                p2 = input.replaceAll("\\s", "").split(",")[1].toLowerCase().replaceAll("[^A-Za-z]", "");
                 return Parser.question1(p1, p2);
             case (2):
-                p1 = input.replaceAll("\\s", "").split(",")[0].toLowerCase();
-                p2 = input.replaceAll("\\s", "").split(",")[1].toLowerCase();
+                p1 = input.replaceAll("\\s", "").split(",")[0].toLowerCase().replaceAll("[^A-Za-z]", "");
+                p2 = input.replaceAll("\\s", "").split(",")[1].toLowerCase().replaceAll("[^A-Za-z]", "");
                 return Parser.question2(p1, p2);
             case (3):
                 p1 = input.replaceAll("\\s", "").toLowerCase();

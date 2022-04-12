@@ -55,7 +55,7 @@ public class Parser {
                     year = Integer.parseInt(data[1]);
                     season = new HashMap<String, HashSet<Integer>>();
                 }
-                data[2] = data[2].replaceAll("*", "");
+                data[2] = data[2].replaceAll("[^A-Za-z]", "");
                 name = data[2].replaceAll("\\s", "").toLowerCase();
                 nameKey = this.keys.getOrDefault(name, this.keys.size() + 1);
                 this.names.put(name,  data[2]);
