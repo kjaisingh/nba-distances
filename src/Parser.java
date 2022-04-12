@@ -55,6 +55,7 @@ public class Parser {
                     year = Integer.parseInt(data[1]);
                     season = new HashMap<String, HashSet<Integer>>();
                 }
+                data[2] = data[2].replaceAll("*", "");
                 name = data[2].replaceAll("\\s", "").toLowerCase();
                 nameKey = this.keys.getOrDefault(name, this.keys.size() + 1);
                 this.names.put(name,  data[2]);
@@ -111,7 +112,6 @@ public class Parser {
     }
     
     public static String question3(String p) {
-        // check whether or not the input player is valid
         if (keys.get(p) != null) {
             String toReturn = "";
             int playerId = keys.get(p);
