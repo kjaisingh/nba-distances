@@ -45,9 +45,10 @@ Expected Input: N/A.
 Example Input: Hit enter.
 Expected Output: Intuitive statistics about the NBA and relationships within it.
 Example Output: 
-    - Maximal Clique: (A, B, C, D, E, F).
-    - Maximal Cycle: A --> B --> C --> D --> E --> F --> A.
-    - 5 Longest-Duration Teammates: A & B, C & D, E & F, G & H, I & J.
+	- Longest-Duration Teammates: A & B (18), C & D (18), E & F (17), G & H (17), I & J (17). 
+    - Connected Graph: No (4 Connected Components).
+    - Highest Clustering Coefficient: Lebron James (0.11).
+    - Highest Betweeness: Michael Jordan (0.0023).
 
 ASSUMPTIONS
 -----------
