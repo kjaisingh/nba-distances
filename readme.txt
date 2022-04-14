@@ -13,8 +13,8 @@ After this, it will ask for an input text, which is dependent on the question. R
 After this, the program will complete some amount of processing, and then print its response in the console. 
 
 
-DOCUMENTATION
--------------
+QUESTION BREAKDOWN
+------------------
 Q1: What is the shortest path between any two NBA players?
 Expected Input: Full names of two players in comma-separated form. 
 Example Input: Lebron James, Michael Jordan.

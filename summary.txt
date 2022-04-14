@@ -10,10 +10,11 @@ The graph created represents vertices as players and edges as indicative of the 
 
 Our program enables users to interact with this graph and obtain useful and meaning information about NBA and the player relationships within it. This can range from specific relationships between two players - for example, the closest path of teammates that links them - to high-level information about the league such as the strongest teammate relationships and the players with the highest clustering coefficient.
 
+
 CATEGORIES
 ----------
-Graph and Graph Algorithms.
-Social Networks.
+- Graph and Graph Algorithms.
+- Social Networks.
 
 
 WORK BREAKDOWN
