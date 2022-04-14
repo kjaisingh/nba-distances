@@ -50,11 +50,3 @@ Example Output:
     - Highest Clustering Coefficient: Lebron James (0.11).
     - Highest Betweeness: Michael Jordan (0.0023).
 
-ASSUMPTIONS
------------
-XXX
-
-
-PROBLEMS ENCOUNTERED
---------------------
-XXX

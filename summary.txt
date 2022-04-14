@@ -1,0 +1,25 @@
+-------------
+NBA Distances
+-------------
+
+PROJECT DESCRIPTION
+-------------------
+Our project involves utilizing a dataset of NBA players dating back to the 1950s to create a distance calculator between any two players who have ever played in the league. This distance calculator can be leveraged to find the path that joins any two players, in terms of the teammates they have had. 
+
+The graph created represents vertices as players and edges as indicative of the fact that two players have played together, with the associated weight being the number of years they played together. For example, if players A and B played together for 5 years while players B and C played together for 6 years, the path from player A to C would be through B and have an associated togetherness cost of 11.
+
+Our program enables users to interact with this graph and obtain useful and meaning information about NBA and the player relationships within it. This can range from specific relationships between two players - for example, the closest path of teammates that links them - to high-level information about the league such as the strongest teammate relationships and the players with the highest clustering coefficient.
+
+CATEGORIES
+----------
+Graph and Graph Algorithms.
+Social Networks.
+
+
+WORK BREAKDOWN
+--------------
+Karan was involved in processing the dataset, parsing the CSV file and generating a graphical representation of the data in Java.
+
+Henghak was involved in creating the suite of algorithms that were in accordance with Question 2 and Question 3.
+
+Irene was involved in creating the suite of algorithms that were in accordance with Question 1 and Question 4.
