@@ -182,9 +182,60 @@ public class Parser {
         return res;
     }
     
+    // implementation of dijkstra
     public static String question2(String p1, String p2) {
-        // check whether or not the input players are valid
-        return "Question 2 Called";
+        Integer startId = keys.get(p1);
+        Integer endId = keys.get(p2);
+        if (startId == null || endId == null) {
+            return "That player is not in our database";
+        }
+        String toReturn = "";
+        Set<Integer> settledNodes = new HashSet<>();
+        Map<Integer, Integer> parent = new HashMap<>(); 
+        Map<Integer, Integer> distances = new HashMap<>();
+        distances.put(startId, 0);
+
+        // find shortest path to all nodes
+        while (true) {
+            int nextPersonId = findShortestDistancePersonID(settledNodes, distances, parent);
+            if (nextPersonId == -1) break;
+            int currentDistance = distances.get(nextPersonId);
+            Map<Integer, Integer> neighbors = adj.get(nextPersonId);
+            for (Map.Entry<Integer, Integer> neighbor : neighbors.entrySet()) {
+                int neighborId = neighbor.getKey();
+                Integer prevDistance = distances.get(neighborId);
+                if (!settledNodes.contains(neighborId) && 
+                (prevDistance == null || currentDistance + neighbor.getValue() < prevDistance)) {
+                    distances.put(neighborId, distances.get(nextPersonId) + neighbor.getValue());
+                    parent.put(neighborId, nextPersonId);
+                }
+            }
+            settledNodes.add(nextPersonId);
+        }
+
+        // find actual path
+        int currentNode = endId;
+        while (currentNode != startId) {
+            toReturn = " --> " + names.get(values.get(currentNode)) + " (" + distances.get(currentNode) + ")" + toReturn;
+            currentNode = parent.get(currentNode);
+        }
+        toReturn = names.get(values.get(startId)) + " (" + distances.get(startId) +")" + toReturn;
+        return toReturn;
+    }
+
+    // Find the next shortest-distance node's id to explore
+    public static int findShortestDistancePersonID(Set<Integer> settledNodes, Map<Integer, Integer> distances, Map<Integer, Integer> parent) {
+        int shortestDistancePerson = -1;
+        Double shortestDistance = Double.MAX_VALUE;
+        for (Map.Entry<Integer, Integer> unsettledNode: distances.entrySet()) {
+            int personId = (int)unsettledNode.getKey();
+            double distance = unsettledNode.getValue();
+            if (!settledNodes.contains(personId) && distance < shortestDistance) {
+                shortestDistance = distance;
+                shortestDistancePerson = personId;
+            }
+        }
+        return shortestDistancePerson;
     }
     
     public static String question3(String p) {
