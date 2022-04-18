@@ -297,8 +297,118 @@ public class Parser {
         return "That player is not in our database";
     }
     
+    private static void dfsHelper(int node, boolean[] visited, ArrayList<Integer> arr) {
+        visited[node] = true;
+        arr.add(node);
+        HashMap<Integer, Integer> map = adj.get(node);
+        if (map != null) {
+            for (Map.Entry<Integer, Integer> entry: map.entrySet()) {
+                int n = entry.getKey();
+                if (!visited[n]) {
+                    dfsHelper(n, visited, arr);
+                }
+            }
+        }
+
+    }
     public static String question4() {
         // no checks necessary
-        return "Question 4 Called";
+        // get longest duration team mate pairs
+        int maxYear = 0;
+        ArrayList<Integer> maxYearTm = new ArrayList<Integer>();
+
+        for (Map.Entry<Integer, HashMap<Integer, Integer>> entry: adj.entrySet()) {
+            int playerKey = entry.getKey();
+            for (Map.Entry<Integer, Integer> teamMateEntry : entry.getValue().entrySet()) {
+                int numYears = teamMateEntry.getValue();
+                if (numYears > maxYear) {
+                    maxYear = numYears;
+                    maxYearTm.clear();
+                    maxYearTm.add(playerKey);
+                    maxYearTm.add(teamMateEntry.getKey());
+                }
+                else if (numYears == maxYear && !maxYearTm.contains(playerKey)) {
+                    maxYearTm.add(playerKey);
+                    maxYearTm.add(teamMateEntry.getKey());                    
+                }
+            }
+        }
+        
+        String res1 = "";
+        for (int i = 0; i < maxYearTm.size()-1;i+=2) {
+            String p1 = names.get(values.get(maxYearTm.get(i)));
+            String p2 = names.get(values.get(maxYearTm.get(i+1)));
+            if (i == 0) {
+                res1 += p1;
+            } else {
+                res1 += ", " + p1;
+            }
+            
+            res1 += " & ";
+            res1 += p2;
+            res1 += " (" + String.valueOf(maxYear) + ")";
+        }
+
+        //get highest clustering coefficient & player with highest number of tm
+        double maxCoefficient = 0.0;
+        int maxP = 0;
+        int maxTeammate = 0;
+        int playerWithMaxTm = 0;
+        for (Map.Entry<Integer, HashMap<Integer, Integer>> entry: adj.entrySet()) {
+            int playerKey = entry.getKey();
+            int n = entry.getValue().size();
+            if (n > maxTeammate) {
+                maxTeammate = n;
+                playerWithMaxTm = playerKey;
+            }
+            HashMap<Integer, Integer> teammates = entry.getValue();
+            int mutualCounter = 0;
+            for(Map.Entry<Integer, Integer> teammate: teammates.entrySet()) {
+                int teammateId = (int)teammate.getKey();
+                HashMap<Integer, Integer> teammates2 = adj.get(teammateId);
+                for (Map.Entry<Integer, Integer> teammate2: teammates.entrySet()) {
+                    if (teammates2.get((int)teammate2.getKey()) != null) {
+                        mutualCounter++;
+                    }
+                }
+            }
+
+            
+            double val = (double)(0.5*mutualCounter)/(double)((n*(n-1))/2);
+           
+            if (val > maxCoefficient) {
+                maxCoefficient = val;
+                maxP = playerKey;
+            }
+        }
+        String pWithHighCoef = names.get(values.get(maxP));
+        String pWithHighTM = names.get(values.get(playerWithMaxTm));
+        
+        //getting number of connected components using DFS
+        boolean[] visited = new boolean[4550];
+        ArrayList<ArrayList<Integer> > components = new ArrayList<>();
+        for (int i = 0; i < 4550; i++) {
+            ArrayList<Integer> arr = new ArrayList<Integer>();
+            if (!visited[i]) {
+                dfsHelper(i, visited, arr);
+                components.add(arr);
+            }
+        }
+        String numComponents = String.valueOf(components.size());
+        String ans = "";
+        if (components.size() == 1) {
+            ans = "Yes";
+        } else {
+            ans = "No";
+        }
+        
+        String res = "Longest-Duration Teammates: " + res1 + "\n" + "Connected Graph: " + ans + " (" +
+        numComponents + " Connected Components)" + "\n" + "Higest Clustering Coefficient: " + 
+                pWithHighCoef + " (" + String.valueOf(maxCoefficient) + ")" + "\n" + 
+        "Player with Highest Number of Teammates: " + pWithHighTM + "(" + String.valueOf(maxTeammate) + ")";
+               
+
+        
+        return res;
     }
 }
