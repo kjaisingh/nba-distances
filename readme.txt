@@ -28,7 +28,10 @@ Q2: What is the minimum cost path between any two NBA players?
 Expected Input: Full names of two players in comma-separated form. 
 Example Input: Lebron James, Michael Jordan.
 Expected Output: The minimum-cost path of teammates from the first to second player.
-Example Output:  Michael Jordan --> JR Smith (2) --> Lebron James (4)
+Example Output:  Michael Jordan (0) --> JR Smith (2) --> Lebron James (4)
+	Interpretation: 
+	- Michael Jordan & JR Smith played with one another for 2 years.
+	- JR Smith & Lebron James played with one another for 4 years.
 
 Q3: What are the high-level statistics regarding any NBA player?
 Expected Input: Full name of a player.
@@ -45,8 +48,8 @@ Expected Input: N/A.
 Example Input: Hit enter.
 Expected Output: Intuitive statistics about the NBA and relationships within it.
 Example Output: 
-	- Longest-Duration Teammates: A & B (18), C & D (18), E & F (17), G & H (17), I & J (17). 
-    - Connected Graph: No (4 Connected Components).
-    - Highest Clustering Coefficient: Lebron James (0.11).
-    - Highest Betweeness: Michael Jordan (0.0023).
+	- Longest-Duration Teammates: John Stockton & Karl Malone (18). 
+    - Connected Graph: No (721 Connected Components).
+    - Highest Clustering Coefficient: Gene Berce (1.0).
+    - Highest Number of Teammates: Juwan Howard (264).
 

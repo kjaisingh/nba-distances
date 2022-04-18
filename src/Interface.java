@@ -4,7 +4,9 @@ import java.util.*;
 public class Interface {
 
     public static void main(String[] args) {
+        System.out.println("----------------------------------------");
         System.out.println("Welcome to the NBA Distance application!");
+        System.out.println("----------------------------------------");
         System.out.println("The application is setting up...\n");
         Parser p = new Parser();
         try {
@@ -41,10 +43,16 @@ public class Interface {
         String p2;
         switch (question) {
             case (1):
+                if (input.split(",").length < 2) {
+                    return "Invalid keyword text.";
+                }
                 p1 = input.replaceAll("\\s", "").split(",")[0].toLowerCase().replaceAll("[^A-Za-z]", "");
                 p2 = input.replaceAll("\\s", "").split(",")[1].toLowerCase().replaceAll("[^A-Za-z]", "");
                 return Parser.question1(p1, p2);
             case (2):
+                if (input.split(",").length < 2) {
+                    return "Invalid keyword text.";
+                }
                 p1 = input.replaceAll("\\s", "").split(",")[0].toLowerCase().replaceAll("[^A-Za-z]", "");
                 p2 = input.replaceAll("\\s", "").split(",")[1].toLowerCase().replaceAll("[^A-Za-z]", "");
                 return Parser.question2(p1, p2);

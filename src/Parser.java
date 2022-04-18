@@ -69,26 +69,6 @@ public class Parser {
             }
         }
         br.close();
-        
-        // Verify that the results are correct.
-        /*
-         for (int k = 1; k < 11; k++) {
-            this.adj.get(k).entrySet().forEach(entry -> {
-                System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
-            });
-            System.out.println();
-        }
-        
-        this.names.entrySet().forEach(entry -> {
-            System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
-        });
-        this.keys.entrySet().forEach(entry -> {
-            System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
-        });
-        this.values.entrySet().forEach(entry -> {
-            System.out.print(entry.getKey() + " : " + entry.getValue() + ", ");
-        });*/
-        
     }
     
     public void incrementEdge(int p1, int p2) {
