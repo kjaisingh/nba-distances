@@ -291,7 +291,7 @@ public class Parser {
                 }
             }
             int n = teammates.size();
-            toReturn += "Clustering Coefficient: " + (0.5*mutualCounter/(n*((n-1)/2 - 1)));
+            toReturn += "Clustering Coefficient: " + (0.5*mutualCounter/(n*(n-1)/2));
             return toReturn;
         }
         return "That player is not in our database";
