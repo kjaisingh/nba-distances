@@ -10,6 +10,8 @@ The graph created represents vertices as players and edges as indicative of the 
 
 Our program enables users to interact with this graph and obtain useful and meaning information about NBA and the player relationships within it. This can range from specific relationships between two players - for example, the closest path of teammates that links them - to high-level information about the league such as the strongest teammate relationships and the players with the highest clustering coefficient.
 
+A full copy of our Github repository can be found at: https://github.com/kjaisingh/nba-distances.
+
 
 CATEGORIES
 ----------
@@ -19,7 +21,7 @@ CATEGORIES
 
 WORK BREAKDOWN
 --------------
-Karan was involved in processing the dataset, parsing the CSV file and generating a graphical representation of the data in Java.
+Karan was involved in processing/parsing the dataset and generating a graphical representation of the data in Java.
 
 Henghak was involved in creating the suite of algorithms that were in accordance with Question 2 and Question 3.
 
